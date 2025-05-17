@@ -2,11 +2,11 @@
   "name": "myai",
   "version": "1.0.0",
   "type": "module",
-  "main": "dist/index.mjs",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "vite build --watch",
+    "dev": "tsx watch src/index.ts",
     "build": "vite build",
-    "start": "node dist/index.mjs",
+    "start": "tsx src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
@@ -29,6 +29,7 @@
     "@types/node": "^22.15.18",
     "@types/supertest": "^6.0.3",
     "supertest": "^7.1.1",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vitest": "^3.1.3"
