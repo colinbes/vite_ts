@@ -18,7 +18,7 @@ A modern backend RESTful API project built with TypeScript, using Vite as the bu
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd myai
+cd vite_ts
 
 # Install dependencies
 npm install
@@ -33,7 +33,7 @@ npm run dev
 ## Project Structure
 
 ```
-myai/
+vite_ts/
 ├── src/                  # Source code
 │   ├── controllers/      # Request handlers
 │   ├── middleware/       # Express middleware
