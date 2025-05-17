@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import { configDefaults } from 'vitest/config';
 
 export default defineConfig({
   plugins: [],
@@ -34,6 +35,6 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     include: ['**/*.{test,spec}.ts'],
-    exclude: ['node_modules', 'dist']
+    exclude: [...configDefaults.exclude, 'dist']
   }
 });
