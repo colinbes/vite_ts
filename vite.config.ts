@@ -10,26 +10,37 @@ export default defineConfig({
     }
   },
   build: {
-    target: 'esnext',
+    target: 'node18',
     outDir: 'dist',
     emptyOutDir: true,
-    lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      // formats: ['cjs', 'es'],
-      formats: ['es'],
-      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`
-    },
+    // Don't use SSR mode since we want to bundle dependencies
+    ssr: false,
+    // Don't build as a library, but as a regular Node.js application
+    lib: undefined,
     rollupOptions: {
+      // Only mark Node.js built-ins as external
       external: [
-        'express',
-        'cors',
-        'helmet',
-        'morgan',
-        'dotenv',
-        /node:.*/
-      ]
+        /^node:/,
+        'fs', 'path', 'os', 'crypto', 'buffer', 'querystring', 'url',
+        'http', 'https', 'stream', 'util', 'zlib', 'events', 'string_decoder',
+        'async_hooks', 'tty', 'net'
+      ],
+      input: resolve(__dirname, 'src/index.ts'),
+      output: {
+        // Ensure a single file output for easier deployment
+        format: 'esm',
+        entryFileNames: 'index.mjs',
+        inlineDynamicImports: true
+      },
     },
-    sourcemap: true
+    // Bundle all dependencies into the output
+    minify: true,
+    sourcemap: true,
+    // Include node_modules in the bundle
+    commonjsOptions: {
+      transformMixedEsModules: true,
+      include: [/node_modules/]
+    }
   },
   test: {
     globals: true,
