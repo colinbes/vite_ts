@@ -9,18 +9,18 @@ userRoutes.get('/', async (_req: Request, res: Response) => {
     // Placeholder for getting all users from the database
     const users = [
       { id: 1, name: 'John Doe', email: 'john@example.com' },
-      { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+      { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
     ];
-    
+
     res.status(200).json({
       status: 'success',
       results: users.length,
-      data: { users }
+      data: { users },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({
       status: 'error',
-      message: 'Failed to retrieve users'
+      message: 'Failed to retrieve users',
     });
   }
 });
@@ -29,18 +29,18 @@ userRoutes.get('/', async (_req: Request, res: Response) => {
 userRoutes.get('/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    
+
     // Placeholder for getting a user by ID from the database
     const user = { id: Number(id), name: 'John Doe', email: 'john@example.com' };
-    
+
     res.status(200).json({
       status: 'success',
-      data: { user }
+      data: { user },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({
       status: 'error',
-      message: 'Failed to retrieve user'
+      message: 'Failed to retrieve user',
     });
   }
 });
@@ -49,18 +49,18 @@ userRoutes.get('/:id', async (req: Request, res: Response) => {
 userRoutes.post('/', async (req: Request, res: Response) => {
   try {
     const userData = req.body;
-    
+
     // Placeholder for creating a user in the database
     const newUser = { id: 3, ...userData };
-    
+
     res.status(201).json({
       status: 'success',
-      data: { user: newUser }
+      data: { user: newUser },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({
       status: 'error',
-      message: 'Failed to create user'
+      message: 'Failed to create user',
     });
   }
 });
@@ -70,18 +70,18 @@ userRoutes.put('/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const userData = req.body;
-    
+
     // Placeholder for updating a user in the database
     const updatedUser = { id: Number(id), ...userData };
-    
+
     res.status(200).json({
       status: 'success',
-      data: { user: updatedUser }
+      data: { user: updatedUser },
     });
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({
       status: 'error',
-      message: 'Failed to update user'
+      message: 'Failed to update user',
     });
   }
 });
@@ -90,14 +90,14 @@ userRoutes.put('/:id', async (req: Request, res: Response) => {
 userRoutes.delete('/:id', async (req: Request, res: Response) => {
   try {
     const { id: _id } = req.params;
-    
+
     // Placeholder for deleting a user from the database
-    
+
     res.status(204).send();
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({
       status: 'error',
-      message: 'Failed to delete user'
+      message: 'Failed to delete user',
     });
   }
 });

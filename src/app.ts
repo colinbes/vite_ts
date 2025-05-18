@@ -7,16 +7,17 @@ import morgan from 'morgan';
 
 // Load environment variables
 config();
-
 // Create Express app
 const app = express();
 
 // Configure CORS
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }),
+);
 
 // Security middleware
 app.use(helmet());
@@ -43,7 +44,7 @@ app.get('/health', (_req: Request, res: Response) => {
 app.use((req: Request, res: Response) => {
   res.status(404).json({
     status: 'error',
-    message: `Cannot ${req.method} ${req.originalUrl}`
+    message: `Cannot ${req.method} ${req.originalUrl}`,
   });
 });
 
@@ -54,7 +55,7 @@ app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
   res.status(statusCode).json({
     status: 'error',
     message: error.message,
-    stack: process.env.NODE_ENV === 'production' ? '🥞' : error.stack
+    stack: process.env.NODE_ENV === 'production' ? '🥞' : error.stack,
   });
 });
 
