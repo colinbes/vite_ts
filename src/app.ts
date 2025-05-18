@@ -1,9 +1,9 @@
-import express, { Request, Response, NextFunction } from 'express';
+import { apiRoutes } from '@/routes';
 import cors from 'cors';
+import { config } from 'dotenv';
+import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { config } from 'dotenv';
-import { apiRoutes } from './routes';
 
 // Load environment variables
 config();
@@ -41,9 +41,9 @@ app.get('/health', (_req: Request, res: Response) => {
 
 // 404 handler
 app.use((req: Request, res: Response) => {
-  res.status(404).json({ 
-    status: 'error', 
-    message: `Cannot ${req.method} ${req.originalUrl}` 
+  res.status(404).json({
+    status: 'error',
+    message: `Cannot ${req.method} ${req.originalUrl}`
   });
 });
 
