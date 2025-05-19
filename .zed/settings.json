@@ -1,0 +1,26 @@
+{
+  "languages": {
+    "JavaScript": {
+      "formatter": [
+        "prettier",
+        {
+          "code_actions": {
+            "source.fixAll.eslint": true
+          }
+        }
+      ],
+      "format_on_save": "on"
+    },
+    "TypeScript": {
+      "formatter": [
+        "prettier",
+        {
+          "code_actions": {
+            "source.fixAll.eslint": true
+          }
+        }
+      ],
+      "format_on_save": "on"
+    }
+  }
+}

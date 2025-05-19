@@ -1,6 +1,6 @@
-import { ESLint } from 'eslint';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 
 type FlatConfigItem = {
@@ -40,8 +40,8 @@ const config: FlatConfigItem[] = [
       '**/__fixtures__/**',
       '**/__mocks__/**',
       '.vscode/**',
-      '.idea/**'
-    ]
+      '.idea/**',
+    ],
   },
   {
     files: ['**/*.ts', '**/*.tsx'],
@@ -64,11 +64,13 @@ const config: FlatConfigItem[] = [
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'prettier': prettierPlugin
+      prettier: prettierPlugin,
     },
     rules: {
       ...tseslint.configs.recommended.rules,
+      ...prettierConfig.rules,
       'prettier/prettier': 'error',
+
       // Disable ESLint formatting rules to avoid conflicts with Prettier
       'arrow-body-style': 'off',
       'prefer-arrow-callback': 'off',

@@ -1,8 +1,8 @@
-import { userRoutes } from '@/routes/user.routes';
-import express from 'express';
+import { userRoutes } from '@/routes/user.routes'
+import express from 'express'
 
 // Create main router
-const apiRoutes = express.Router();
+const apiRoutes = express.Router()
 
 // Root route
 apiRoutes.get('/', (_req, res) => {
@@ -10,10 +10,10 @@ apiRoutes.get('/', (_req, res) => {
     status: 'success',
     message: 'Welcome to the API',
     version: '1.0.0',
-  });
-});
+  })
+})
 
 // Mount routes
-apiRoutes.use('/users', userRoutes);
+apiRoutes.use('/users', userRoutes)
 
-export { apiRoutes };
+export { apiRoutes }
