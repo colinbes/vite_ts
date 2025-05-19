@@ -1,3 +1,15 @@
+// {
+//   "languages": {
+//     "TypeScript": {
+//       "formatter": "prettier",
+//       "code_actions_on_format": {
+//         "source.fixAll.eslint": true
+//       },
+//       "format_on_save": "on"
+//     }
+//   }
+// }
+// Below doesn't seem to work and appears that eslint is neing applied to format as well
 {
   "languages": {
     "JavaScript": {
